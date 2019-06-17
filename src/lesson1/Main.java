@@ -28,6 +28,7 @@ public class Main {
             for (Obstacle o:obstacles) {
                 o.doIt(c);
                 if(!c.isOnDistance()){
+                    
                     break;
                 }
             }
