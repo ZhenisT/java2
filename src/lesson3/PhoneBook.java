@@ -4,18 +4,17 @@ package lesson3;
 import java.util.*;
 
 public class PhoneBook {
-    private Map<String, LinkedList<String>> map;
+    private Map<String, LinkedList<String>> map = new HashMap<>();
 
     public PhoneBook() {
-        this.map = new HashMap<>();
+        this.map = map;
     }
 
     public void add(String fam, String num) {
-        LinkedList<String> numb;
+        LinkedList<String> numb = new LinkedList<>();
         if (map.containsKey(fam)) {
             numb = map.get(fam);
         }
-        numb = new LinkedList<>();
 
         numb.add(num);
         map.put(fam, numb);
