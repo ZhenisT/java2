@@ -69,9 +69,11 @@ public class Team implements Competitor {
 
     @Override
     public void info() {
-        for (int i = 0; i < name.length; i++) {
-            System.out.println(name[i] + " "+ active); 
-        }
+
+            System.out.println(nameTeam + " "+ active);
+
         
     }
+
+
 }
