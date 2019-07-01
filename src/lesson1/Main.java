@@ -24,18 +24,19 @@ public class Main {
 
         Obstacle[] obstacles = {new Cross(80), new Wall(3), new Water(10)};
 //
-        for (Competitor c:competitors) {
-            for (Obstacle o:obstacles) {
-                o.doIt(c);
-                if(!c.isOnDistance()){
-                    break;
-                }
-            }
-        }
+//        for (Competitor c:competitors) {
+//            for (Obstacle o:obstacles) {
+//                o.doIt(c);
+//                if(!c.isOnDistance()){
 //
-        for (Competitor c:competitors) {
-            c.info();
-        }
+//                    break;
+//                }
+//            }
+//        }
+//
+//        for (Competitor c:competitors) {
+//            c.info();
+//        }
 
         for (Competitor c: competitor) {
             for (Obstacle o: obstacles) {
@@ -46,7 +47,7 @@ public class Main {
             }
         }
 
-        for (Competitor c:competitors) {
+        for (Competitor c:competitor) {
             c.info();
         }
 
