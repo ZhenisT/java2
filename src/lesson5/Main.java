@@ -2,32 +2,39 @@ package lesson5;
 
 public class Main {
     public static void main(String[] args) {
-        final int size = 1000000;
+        final int size = 10000000;
         final int h = size / 2;
 
-        fullSizeArr(size);
-        halfSizeArr(h, size);
+        firstThread(size);
+        multiThread(h, size);
 
     }
 
-    public static void fullSizeArr(int size) {
+    public static void firstThread(int size){
         long a = System.currentTimeMillis();
-        float[] fullSizeArr = floatArray(size);
-        productMath(size, fullSizeArr);
-        System.out.println("Первый просто бежит по массиву и вычисляет значения");
+        fullSizeArr(size);
         System.out.println("Результат: "+(System.currentTimeMillis() - a));
     }
 
-    public static void halfSizeArr(int h, int size) {
+    public static void multiThread(int h, int size){
         long a = System.currentTimeMillis();
+        float[] fullSizeArr = floatArray(size);
+        halfSizeArr(h , fullSizeArr);
+        System.out.println("Результат: "+(System.currentTimeMillis() - a));
+    }
+
+    private static void fullSizeArr(int size) {
+        float[] fullSizeArr = floatArray(size);
+        productMath(size, fullSizeArr);
+        System.out.println("Первый просто бежит по массиву и вычисляет значения");
+    }
+
+    private static void halfSizeArr(int h, float[] fullSizeArr) {
+
         float[] arr1 = new float[h];
         float[] arr2 = new float[h];
-
-        float[] fullSizeArr = floatArray(size);
-
         System.arraycopy(fullSizeArr, 0, arr1, 0, h);
         System.arraycopy(fullSizeArr, h, arr2, 0, h);
-
 
         Thread t1 = new Thread(() -> {
             productMath(h, arr1);
@@ -43,7 +50,6 @@ public class Main {
         System.arraycopy(arr2, 0, fullSizeArr, h, h);
 
         System.out.println("Второй разбивает массив на два массива, в двух потоках высчитывает новые значения и потом склеивает эти массивы обратно в один");
-        System.out.println("Результат: "+(System.currentTimeMillis() - a));
     }
 
     private static float[] floatArray(int size) {
